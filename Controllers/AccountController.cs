@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using CookieBasedAuthenticationDemo.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -7,6 +8,21 @@ namespace CookieBasedAuthenticationDemo.Controllers
 {
     public class AccountController : Controller
     {
+
+        public ActionResult Register()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Register(Registration registration)
+        {
+            if (ModelState.IsValid) {
+                ViewBag.Message = "Successfully registered...";
+                return View("Sucess");
+            }
+            return View(registration);
+        }
 
        
         public IActionResult Login()

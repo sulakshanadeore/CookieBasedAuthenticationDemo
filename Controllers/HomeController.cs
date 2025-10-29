@@ -14,7 +14,12 @@ namespace CookieBasedAuthenticationDemo.Controllers
         {
             _logger = logger;
         }
+        [AllowAnonymous]
+        public ActionResult Welcome()
+        {
 
+            return View();
+        }
         public IActionResult Index()
         {
             return View();
